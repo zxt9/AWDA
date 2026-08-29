@@ -1,0 +1,49 @@
+{
+  "seed": 42,
+  "model": {
+    "backbone": "ResNet50",
+    "confidence_threshold": 0.95,
+    "pretrained": true
+  },
+  "optimizer": {
+    "lr": 0.01,
+    "weight_decay": 0.0001,
+    "momentum": 0.9
+  },
+  "train_source": {
+    "data_dir": "../data/LEVIR-CD-256",
+    "batch_size": 8,
+    "crop_size": 256,
+    "shuffle": true,
+    "base_size": 256,
+    "scale": true,
+    "augment": "weak",
+    "flip": true,
+    "split": "train",
+    "num_workers": 2
+  },
+  "train_target": {
+    "data_dir": "../data/GZ-CD-256",
+    "batch_size": 8,
+    "crop_size": 256,
+    "shuffle": true,
+    "base_size": 256,
+    "scale": true,
+    "augment": "strong",
+    "flip": true,
+    "split": "train",
+    "num_workers": 2
+  },
+  "val_loader": {
+    "data_dir": "../data/GZ-CD-256",
+    "batch_size": 8,
+    "val": true,
+    "split": "val",
+    "shuffle": false,
+    "num_workers": 2
+  },
+  "trainer": {
+    "epochs": 50,
+    "save_dir": "saved/awda_resnet50"
+  }
+}
